@@ -12,3 +12,7 @@ Currently, two official plugins are available:
 - make sure you have bun installed
 - run `bun install` to install node packages
 - run `bun dev` to start the project.
+
+## Results
+
+![Result](./result-ss.png)
