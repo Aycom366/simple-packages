@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { addMonths, eachDayOfInterval, endOfMonth, endOfWeek, format, isEqual, isSameMonth, isToday, startOfMonth, startOfWeek, subMonths } from "date-fns";
 import { useMemo, useState } from "react";
+import CorePackage, { MessageEvents } from "@Ay/web-sdk-template";
 
 function App() {
   const days = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"];
@@ -16,10 +17,39 @@ function App() {
     });
   }, [currentMonth]);
 
+  const openWidget = () => {
+    const widgetPackage = new CorePackage({
+      onEvent(event, data) {
+        switch (event) {
+          case MessageEvents.WIDGET_LOADED:
+            console.log("loaded", data);
+            break;
+          case MessageEvents.WIDGET_CLOSED:
+            console.log("closed", data);
+            break;
+          case MessageEvents.WIDGET_OPENED:
+            console.log("widget opened", data);
+            break;
+          case MessageEvents.WIDGET_LOAD_ERROR:
+            console.log("widget load error", data);
+            break;
+        }
+      },
+      publicKey: "Ayomide",
+      meta: {
+        order_ref: "kjdjkdjkdjds",
+        custom: "pass anything",
+      },
+    });
+    widgetPackage.setup();
+    widgetPackage.open();
+  };
+
   return (
     <div className="w-screen h-screen grid items-center">
       <div className="flex gap-8 items-center justify-center flex-col">
-        <h1 className="text-3xl">React Calendar</h1>
+        <h1 className="text-3xl">React Calendar </h1>
+        <button onClick={openWidget}>open widget</button>
         <div className="flex gap-6  shadow-xl p-6 rounded-lg w-full max-w-lg flex-col">
           <p className="text-center">Selected date: {selectedDate.toDateString()}</p>
           <div className="flex justify-around ">

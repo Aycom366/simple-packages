@@ -1,21 +1,23 @@
 {
   "type": "module",
-  "name": "embeddable-app",
+  "name": "@Ay/web-sdk-template",
   "version": "1.0.0",
   "description": "Javascript npm package",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js",
+    "build:local": "rm @Ay/web-sdk-template.tgz &&  npm run build && npm pack &&  mv @Ay/web-sdk-template-1.0.0.tgz @Ay/web-sdk-template.tgz"
   },
   "keywords": [
     "npm",
     "package",
     "library"
   ],
-  "author": "bamigboyeayomide200@gmail.com",
+  "author": "Ayomide <bamigboyeayomide200@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-terser": "^0.4.3",
     "rollup": "^3.29.4",
     "rollup-plugin-typescript2": "^0.36.0",
