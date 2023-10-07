@@ -1,6 +1,6 @@
 import { MessageEvents, WidgetOption, WidgetResponse } from "./types";
 var eventVariable: any;
-const origin = `http://127.0.0.1:5173`;
+const origin = `https://simple-packages.vercel.app`;
 
 export function turnOnVisibility() {
   var container = document.getElementById("embeddable--widget-div");
@@ -43,12 +43,11 @@ export function init(config: WidgetOption) {
    *
    * This function creates a URL based on the provided origin and attaches query parameters
    * to it using the `searchParams.append` method. You can add custom query parameters by
-   * including them in the `config.additionalParams` object.
+   * appending keys and values to `searchParams.append`
    *
    * @param {string} origin - The base URL origin.
    * @param {string} config.publicKey - The publicKey to append as a search parameter.
    * @param {Object} config.meta - The meta object to append as a JSON-encoded search parameter.
-   * @param {Object} [config.additionalParams] - Optional additional search parameters to append.
    */
   var source = new URL(origin);
   source.searchParams.append("publicKey", config.publicKey);
@@ -79,7 +78,7 @@ export function init(config: WidgetOption) {
      * Hides the loader if iframe is loaded and iframe is visible
      */
     if (iframe.style.visibility === "visible") {
-      var loader = document.getElementById("@Ay/web-sdk-template-loader");
+      var loader = document.getElementById("@aycom366/web-sdk-template-loader");
       if (loader) loader.style.display = "none";
     }
 
@@ -153,7 +152,7 @@ export function turnOffVisibility() {
 
 export function openWidget(config: WidgetOption) {
   var container = document.getElementById("embeddable--widget-div");
-  var loader = document.getElementById("@Ay/web-sdk-template-loader");
+  var loader = document.getElementById("@aycom366/web-sdk-template-loader");
   var frame = document.getElementById("embeddable--frame-id");
   if (container && loader && frame) {
     container.style.visibility = "visible";
@@ -174,7 +173,7 @@ export function openWidget(config: WidgetOption) {
 export function createLoader() {
   let loaderDiv = document.createElement("div");
   let childDiv = document.createElement("div");
-  loaderDiv.setAttribute("id", "@Ay/web-sdk-template-loader");
+  loaderDiv.setAttribute("id", "@aycom366/web-sdk-template-loader");
   loaderDiv.classList.add("app-loader");
   childDiv.classList.add("app-loader__spinner");
 

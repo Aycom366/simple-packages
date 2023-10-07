@@ -1,21 +1,31 @@
 {
   "type": "module",
-  "name": "@Ay/web-sdk-template",
+  "name": "@aycom366/web-sdk-template",
   "version": "1.0.0",
   "description": "Javascript npm package",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aycom366/simple-packages/tree/main/web-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/Aycom366/simple-packages/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.js",
-    "build:local": "rm @Ay/web-sdk-template.tgz &&  npm run build && npm pack &&  mv @Ay/web-sdk-template-1.0.0.tgz @Ay/web-sdk-template.tgz"
+    "build": "rollup -c rollup.config.js"
   },
   "keywords": [
     "npm",
     "package",
-    "library"
+    "library",
+    "sdk",
+    "web sdk",
+    "widget",
+    "embeddable"
   ],
   "author": "Ayomide <bamigboyeayomide200@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-terser": "^0.4.3",

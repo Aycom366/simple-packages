@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { addMonths, eachDayOfInterval, endOfMonth, endOfWeek, format, isEqual, isSameMonth, isToday, startOfMonth, startOfWeek, subMonths } from "date-fns";
-import { useMemo, useState } from "react";
-import CorePackage, { MessageEvents } from "@Ay/web-sdk-template";
+import { useCallback, useMemo, useState } from "react";
+import CorePackage, { MessageEvents } from "@aycom366/web-sdk-template";
 
 function App() {
   const days = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"];
@@ -17,7 +17,7 @@ function App() {
     });
   }, [currentMonth]);
 
-  const openWidget = () => {
+  const openWidget = useCallback(() => {
     const widgetPackage = new CorePackage({
       onEvent(event, data) {
         switch (event) {
@@ -43,7 +43,7 @@ function App() {
     });
     widgetPackage.setup();
     widgetPackage.open();
-  };
+  }, []);
 
   return (
     <div className="w-screen h-screen grid items-center">
