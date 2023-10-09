@@ -10,8 +10,6 @@ using npm
 npm install @aycom366/web-sdk-template
 ```
 
-`@aycom366/web-sdk-template` is taken from package.json name
-
 ## Note
 
 - This package should only be used on the client side.
@@ -68,14 +66,47 @@ function App() {
 ### with Vue
 
 ```js
+<script setup lang="ts">
+import CorePackage, { MessageEvents } from '@aycom366/web-sdk-template'
+
+function openWidget() {
+  const widgetPackage = new CorePackage({
+    onEvent(event, data) {
+      switch (event) {
+        case MessageEvents.WIDGET_LOADED:
+          console.log('loaded', data)
+          break
+        case MessageEvents.WIDGET_CLOSED:
+          console.log('closed', data)
+          break
+        case MessageEvents.WIDGET_OPENED:
+          console.log('widget opened', data)
+          break
+        case MessageEvents.WIDGET_LOAD_ERROR:
+          console.log('widget load error', data)
+          break
+      }
+    },
+    publicKey: 'Ayomide',
+    meta: {
+      order_ref: 'kjdjkdjkdjds',
+      custom: 'pass anything'
+    }
+  })
+  widgetPackage.setup()
+  widgetPackage.open()
+}
+</script>
+
+<template>
+  <button @click="openWidget">Open Widget</button>
+</template>
 
 ```
 
-### with Angular
+## Examples
 
-```js
-
-```
+see more examples [here](/examples)
 
 ## Testing Package Locally
 
@@ -86,5 +117,5 @@ If you'd like to test this package locally before publishing to npm
   This tarball contains the package's source code, along with its package.json and any other files specified in the files field of the package's package.json (if the field exists).
 - copy the tarball.tgz file generated into the root directory of project you'd like to test it on
 - run `npm install tarball.tgz file generated` to install the package
-  Example: `npm install ./aycom366-web-sdk-template-1.0.0`
-- Then start using the package as if you installed it directly from npm.
+  Example: `npm install ./aycom366-web-sdk-template-1.0.0.tgz`
+- Then start using the package as if you've installed it from npm.

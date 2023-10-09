@@ -14,12 +14,10 @@ export default class CorePackage {
     this.options = props;
     this.isSetup = false;
   }
-
   setup() {
     init(this.options);
     this.isSetup = true;
   }
-
   close() {
     turnOffVisibility();
   }

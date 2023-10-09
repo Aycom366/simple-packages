@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aycom366/web-sdk-template": "file:aycom366-web-sdk-template.tgz",
+    "@aycom366/web-sdk-template": "^1.0.1",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
