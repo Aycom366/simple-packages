@@ -12,7 +12,13 @@ function App() {
 
   return (
     <>
-      <h1>Welcome and enjoy your time here</h1>
+      <h3>This SDK right here is not serving purpose</h3>
+      <p>
+        Instead, it's a valuable resource that serves as a guiding light for
+        fellow developers. The primary goal here is to show you how you can
+        create your own SDKs, empowering you with the knowledge and tools to
+        build amazing solutions tailored to your needs.
+      </p>
       <div className='card'>
         <h3>PublicKey: {publicKey}</h3>
         {meta && (
